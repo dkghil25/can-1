@@ -21,7 +21,7 @@ const PRODUCTS = {
     icon: "candy",
     tag: "Vitamin Botanical Gummies",
   },
-  "botanic-mist ": {
+  "botanic-mist": {
     title: "Botanic Mist",
     price: "$16.00",
     short:
