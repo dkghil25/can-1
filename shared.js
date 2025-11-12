@@ -344,10 +344,7 @@ function loadFooter() {
         </div>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p class="text-xs text-[#4C4C4C]">© ${new Date().getFullYear()} Seravita Botanicals. All Rights Reserve.</p>
-          <a href="index.html" class="inline-flex items-center gap-2 text-sm rounded-full border border-[#E4E4E4] px-4 py-2 hover:border-[#00BEEA] hover:text-[#00BEEA] transition">
-            <i data-lucide="arrow-up" class="w-4 h-4"></i>
-            Back to Top
-          </a>
+        <p class="text-xs text-[#4C4C4C]">921 Broadway Dunedin, FL 34698</p>
         </div>
       </div>
     </footer>
