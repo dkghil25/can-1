@@ -204,77 +204,131 @@
             </h3>
           </div>
         </div>
-        <div class="mt-2 overflow-x-auto scroll-smooth snap-x snap-mandatory">
-          <div class="flex gap-6 px-6 pb-2">
-            <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
-              <div
-                class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-              >
-                <img
-                  src="/assets/practice-1.webp"
-                  alt="Brewing tea in glass mug"
-                  class="w-full h-[320px] object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption
-                class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
-              >
-                Morning rituals in motion
-              </figcaption>
-            </figure>
-            <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
-              <div
-                class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-              >
-                <img
-                  src="/assets/practice-2.webp"
-                  alt="Fruit chews on ceramic dish"
-                  class="w-full h-[320px] object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption
-                class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
-              >
-                Simple joys in every chew
-              </figcaption>
-            </figure>
-            <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
-              <div
-                class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-              >
-                <img
-                  src="/assets/practice-3.webp"
-                  alt="Inhaler on linen with notebook"
-                  class="w-full h-[320px] object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption
-                class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
-              >
-                Calm, wherever you go
-              </figcaption>
-            </figure>
-            <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
-              <div
-                class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
-              >
-                <img
-                  src="/assets/practice-4.webp"
-                  alt="Packaging flat lay"
-                  class="w-full h-[320px] object-cover"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption
-                class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
-              >
-                Inspired by nature’s quiet
-              </figcaption>
-            </figure>
+        <div class="max-w-7xl mx-auto relative">
+          <!-- Previous Button -->
+          <button
+            id="prevBtn"
+            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur p-3 rounded-full border border-gray-200 shadow-lg hover:bg-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous image"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Carousel -->
+          <div
+            id="carousel"
+            class="mt-2 overflow-x-auto scroll-smooth snap-x snap-mandatory carousel-container"
+          >
+            <div class="flex gap-6 px-6 pb-2">
+              <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
+                <div
+                  class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                >
+                  <img
+                    src="/assets/practice-1.webp"
+                    alt="Brewing tea in glass mug"
+                    class="w-full h-[320px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption
+                  class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
+                >
+                  Morning rituals in motion
+                </figcaption>
+              </figure>
+
+              <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
+                <div
+                  class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                >
+                  <img
+                    src="/assets/practice-2.webp"
+                    alt="Fruit chews on ceramic dish"
+                    class="w-full h-[320px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption
+                  class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
+                >
+                  Simple joys in every chew
+                </figcaption>
+              </figure>
+
+              <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
+                <div
+                  class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                >
+                  <img
+                    src="/assets/practice-3.webp"
+                    alt="Inhaler on linen with notebook"
+                    class="w-full h-[320px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption
+                  class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
+                >
+                  Calm, wherever you go
+                </figcaption>
+              </figure>
+
+              <figure class="relative min-w-[80%] sm:min-w-[480px] snap-start">
+                <div
+                  class="overflow-hidden rounded-[24px] border border-[#E4E4E4] bg-white shadow-[0_10px_24px_rgba(0,0,0,0.06)]"
+                >
+                  <img
+                    src="/assets/practice-4.webp"
+                    alt="Packaging flat lay"
+                    class="w-full h-[320px] object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption
+                  class="absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-2 rounded-full border border-[#E4E4E4] text-sm flex items-center gap-2"
+                >
+                  Inspired by nature's quiet
+                </figcaption>
+              </figure>
+            </div>
           </div>
+
+          <!-- Next Button -->
+          <button
+            id="nextBtn"
+            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur p-3 rounded-full border border-gray-200 shadow-lg hover:bg-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Next image"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
+
+          <!-- Dots Indicator -->
+          <div id="dots" class="flex justify-center gap-2 mt-4"></div>
         </div>
       </section>
 
@@ -375,6 +429,7 @@
     <div id="footer-container"></div>
     <div id="modal-container"></div>
     <div
+      <div
       id="toastRegion"
       aria-live="polite"
       class="fixed bottom-4 right-4 z-[70] space-y-2"

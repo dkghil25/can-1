@@ -42,3 +42,75 @@ document.getElementById("bannerForm")?.addEventListener("submit", (e) => {
 window.addEventListener("load", () => {
   loadProducts();
 });
+
+const carousel = document.getElementById("carousel");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const dotsContainer = document.getElementById("dots");
+const figures = carousel.querySelectorAll("figure");
+
+let currentIndex = 0;
+
+// Create dots
+figures.forEach((_, index) => {
+  const dot = document.createElement("button");
+  dot.className = "w-2 h-2 rounded-full transition-all";
+  dot.setAttribute("aria-label", `Go to slide ${index + 1}`);
+  dot.addEventListener("click", () => scrollToIndex(index));
+  dotsContainer.appendChild(dot);
+});
+
+const dots = dotsContainer.querySelectorAll("button");
+
+function updateDots() {
+  dots.forEach((dot, index) => {
+    if (index === currentIndex) {
+      dot.className = "w-6 h-2 rounded-full bg-gray-800 transition-all";
+    } else {
+      dot.className = "w-2 h-2 rounded-full bg-gray-300 transition-all";
+    }
+  });
+}
+
+function updateButtons() {
+  prevBtn.disabled = currentIndex === 0;
+  nextBtn.disabled = currentIndex === figures.length - 1;
+}
+
+function scrollToIndex(index) {
+  currentIndex = index;
+  const figure = figures[index];
+  carousel.scrollTo({
+    left: figure.offsetLeft - 24,
+    behavior: "smooth",
+  });
+  updateDots();
+  updateButtons();
+}
+
+prevBtn.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    scrollToIndex(currentIndex - 1);
+  }
+});
+
+nextBtn.addEventListener("click", () => {
+  if (currentIndex < figures.length - 1) {
+    scrollToIndex(currentIndex + 1);
+  }
+});
+
+// Update current index on scroll
+carousel.addEventListener("scroll", () => {
+  const scrollLeft = carousel.scrollLeft;
+  const newIndex = Math.round(scrollLeft / (figures[0].offsetWidth + 24));
+  if (newIndex !== currentIndex && newIndex >= 0 && newIndex < figures.length) {
+    currentIndex = newIndex;
+    updateDots();
+    updateButtons();
+  }
+});
+
+// Initialize
+updateDots();
+updateButtons();
