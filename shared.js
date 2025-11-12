@@ -344,7 +344,7 @@ function loadFooter() {
         </div>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p class="text-xs text-[#4C4C4C]">© ${new Date().getFullYear()} Seravita Botanicals. All Rights Reserve.</p>
-        <p class="text-xs text-[#4C4C4C]"><svg
+        <p class="text-xs text-[#4C4C4C] flex items-center"><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
