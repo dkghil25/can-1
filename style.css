@@ -1,0 +1,20 @@
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+/* Reserve vertical space for the products grid to reduce layout shift when JS injects content */
+
+/* Make images behave consistently and avoid inline baseline gaps */
+img {
+  display: block;
+}

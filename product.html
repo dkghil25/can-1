@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Product — Seravita Botanicals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="View product details from Seravita Botanicals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Inter:wght@400;500&family=Outfit:wght@400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="antialiased bg-[#FAFAF8] text-[#1F1F1F] selection:bg-[#00BEEA]/20 selection:text-[#1F1F1F]"
+  >
+    <div
+      class="w-full text-center text-[13px] font-[500] tracking-wide py-2 text-[#4C4C4C]"
+    >
+      Small-batch. Mindfully made. Next release opens soon.
+    </div>
+
+    <div id="header-container"></div>
+
+    <main class="pt-24 md:pt-28">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="flex items-center gap-2 mt-4 text-[#4C4C4C]">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <a href="index.html" class="text-sm hover:underline">Home</a>
+          <span class="text-sm">/</span>
+          <a href="shop.html" class="text-sm hover:underline">Shop</a>
+          <span class="text-sm">/</span>
+          <span id="pd-breadcrumb" class="text-sm">Product</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6">
+          <div
+            class="rounded-[24px] overflow-hidden border border-[#E4E4E4] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
+          >
+            <img
+              id="pd-image"
+              src=""
+              alt=""
+              class="w-full h-[420px] object-cover"
+              width="800"
+              height="420"
+            />
+          </div>
+          <div class="pt-2">
+            <div class="inline-flex items-center gap-2 text-[#00BEEA] mb-2">
+              <i id="pd-icon" data-lucide="leaf" class="w-5 h-5"></i>
+              <span class="text-sm font-[500] tracking-[0.12em] uppercase"
+                >Small Batch</span
+              >
+            </div>
+            <h1
+              id="pd-title"
+              class="text-3xl sm:text-4xl tracking-tight font-[600] uppercase"
+            >
+              Product Name
+            </h1>
+            <div class="mt-3 h-px w-24 bg-[#E4E4E4]"></div>
+            <div class="mt-4 text-[18px] font-[500]" id="pd-price">$0.00</div>
+            <p id="pd-short" class="mt-3 text-[#4C4C4C] leading-[1.7]"></p>
+            <p id="pd-long" class="mt-3 text-[#4C4C4C] leading-[1.7]"></p>
+            <div id="pd-size" class="mt-4 text-sm text-[#4C4C4C]"></div>
+            <div class="mt-6 flex gap-3">
+              <button
+                id="pd-notify"
+                class="inline-flex items-center gap-2 rounded-full border border-[#EAE6DE] px-6 py-3 text-[15px] hover:border-[#00BEEA] hover:text-[#00BEEA] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA]"
+              >
+                <i data-lucide="bell" class="w-5 h-5"></i>
+                Out of Stock – Notify Me
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <div id="modal-container"></div>
+    <div
+      id="toastRegion"
+      aria-live="polite"
+      class="fixed bottom-4 right-4 z-[70] space-y-2"
+    ></div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="shared.js"></script>
+    <script src="product.js"></script>
+  </body>
+</html>

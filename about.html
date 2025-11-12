@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>About — Snowleaf Botanicals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Learn about Snowleaf Botanicals and our mission to help you find calm through simple rituals."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&family=Inter:wght@400;500&family=Outfit:wght@400;500&family=Playfair+Display:ital,wght@1,500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      defer
+      src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="antialiased bg-[#FAFAF8] text-[#1F1F1F] selection:bg-[#00BEEA]/20 selection:text-[#1F1F1F]"
+  >
+    <div
+      class="w-full text-center text-[13px] font-[500] tracking-wide py-2 text-[#4C4C4C]"
+    >
+      Small-batch. Mindfully made. Next release opens soon.
+    </div>
+
+    <div id="header-container"></div>
+
+    <main class="pt-24 md:pt-28">
+      <div class="w-full">
+        <div
+          class="h-[320px] sm:h-[420px] w-full overflow-hidden border-y border-[#E4E4E4] bg-[#FAFAF8] relative"
+        >
+          <img
+            src="assets/about-hero.webp"
+            alt="Dried herbs on linen table"
+            class="w-full h-full object-cover"
+            fetchpriority="high"
+            width="1600"
+            height="420"
+          />
+          <div class="absolute inset-0 bg-neutral-900/50 z-1"></div>
+          <h1
+            class="text-[64px] text-neutral-50 absolute z-3 left-[30%] top-1/2 transform -translate-1/2 font-bold drop-shadow-lg"
+          >
+            About Us
+          </h1>
+        </div>
+        <div class="mx-auto max-w-3xl px-6 py-12">
+          <p class="font-['Playfair Display'] italic text-xl text-[#1F1F1F]">
+            "Calm isn't found, it's made, one small ritual at a time."
+          </p>
+          <div
+            class="my-8 flex items-center justify-center gap-2 text-[#00BEEA]"
+          >
+            <i data-lucide="leaf" class="w-4 h-4"></i>
+            <i data-lucide="leaf" class="w-4 h-4"></i>
+            <i data-lucide="leaf" class="w-4 h-4"></i>
+          </div>
+          <div class="prose max-w-none">
+            <p class="text-[#4C4C4C] leading-[1.7]">
+              At <b>Seravita Botanicals</b>, we believe that calm isn’t
+              something you find, it’s something you create. <br />
+              <br />
+              Our small-batch herbal collections are designed to bring
+              simplicity and serenity to your everyday rituals. Each blend is
+              thoughtfully crafted with botanicals known for their gentle,
+              grounding qualities, inspired by still mornings, quiet evenings,
+              and nature’s soft balance.
+            </p>
+            <div
+              class="my-6 flex items-center justify-center gap-1 text-[#00BEEA]"
+            >
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+            </div>
+            <p class="text-[#4C4C4C] leading-[1.7]">
+              We source our ingredients from trusted growers who share our
+              respect for purity and sustainability. Every Seravita creation,
+              from our <b>Herbal Snowcaps</b> to our
+              <b>Citrus Calm Chews</b> and <b>Botanic Mist</b>, is made with
+              care, intention, and a commitment to quality.
+              <br />
+              <br />
+              Whether you’re brewing tea, taking a deep breath, or embracing a
+              mindful pause, Seravita exists to help you create space for calm.
+            </p>
+            <div
+              class="my-6 flex items-center justify-center gap-1 text-[#00BEEA]"
+            >
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+              <i data-lucide="sprout" class="w-4 h-4"></i>
+            </div>
+            <div class="pb-8">
+              <h3 class="text-[#4C4C4C] leading-[1.7] text-[24px] font-bold">
+                Our Philosophy:
+              </h3>
+              <p>Simple ingredients. Honest rituals. Modern calm.</p>
+            </div>
+            <div>
+              <h3 class="text-[#4C4C4C] leading-[1.7] text-[24px] font-bold">
+                Our Promise:
+              </h3>
+              <p>
+                No shortcuts. No synthetic additives. Just plant-based calm in
+                its purest form.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-container"></div>
+    <div id="modal-container"></div>
+    <div
+      id="toastRegion"
+      aria-live="polite"
+      class="fixed bottom-4 right-4 z-[70] space-y-2"
+    ></div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="shared.js"></script>
+  </body>
+</html>
