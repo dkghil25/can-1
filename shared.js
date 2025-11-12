@@ -26,7 +26,7 @@ const PRODUCTS = {
     price: "$16.00",
     short:
       "Portable aromatherapy device with lavender and bergamot for on-the-go calm.",
-    long: " Find your calm wherever life takes you with our Botanic Mist Aromatherapy Diffuser. This elegant pen releases a soft botanical vapor — no nicotine, no additives just soothing aroma from pure essential oils.",
+    long: " Find your calm wherever life takes you with our Botanic Mist Aromatherapy Diffuser. This elegant pen releases a soft botanical vapor, no nicotine, no additives just soothing aroma from pure essential oils.",
     size: "Rechargeable via USB • Contains pure essential oils only",
     image: "/assets/botanic-mist.webp",
     icon: "wind",
