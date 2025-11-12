@@ -34,6 +34,58 @@ const PRODUCTS = {
   },
 };
 
+// --- Cart helpers (stored in localStorage) ---
+function getCart() {
+  try {
+    const raw = localStorage.getItem("sv_cart");
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem("sv_cart", JSON.stringify(cart));
+  updateCartCountUI();
+}
+
+function addToCart(productId, qty = 1) {
+  const cart = getCart();
+  const idx = cart.findIndex((it) => it.id === productId);
+  if (idx >= 0) {
+    cart[idx].qty += qty;
+  } else {
+    cart.push({ id: productId, qty });
+  }
+  saveCart(cart);
+  showToast("Added to cart");
+}
+
+function removeFromCart(productId) {
+  const cart = getCart().filter((it) => it.id !== productId);
+  saveCart(cart);
+}
+
+function clearCart() {
+  saveCart([]);
+}
+
+function cartTotalItems() {
+  return getCart().reduce((s, it) => s + (it.qty || 0), 0);
+}
+
+function formatPrice(priceStr) {
+  // priceStr like "$22.00"
+  return Number((priceStr || "").replace(/[^0-9.-]+/g, "")) || 0;
+}
+
+function updateCartCountUI() {
+  const span = document.getElementById("cartCount");
+  if (span) {
+    span.textContent = String(cartTotalItems());
+  }
+}
+
 function loadHeader() {
   const container = document.getElementById("header-container");
   if (!container) return;
@@ -81,10 +133,10 @@ function loadHeader() {
               <i data-lucide="bell" class="w-4 h-4"></i>
               <span class="hidden sm:inline">Join Waitlist</span>
             </button>
-            <button class="relative rounded-full p-2 hover:bg-[#EAE6DE]/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA]" aria-label="View Cart">
-              <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-              <span class="absolute -top-1 -right-1 w-4 h-4 bg-[#00BEEA] text-white text-[10px] rounded-full grid place-items-center">0</span>
-            </button>
+              <button id="cartBtn" class="relative rounded-full p-2 hover:bg-[#EAE6DE]/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA]" aria-label="View Cart">
+                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                <span id="cartCount" class="absolute -top-1 -right-1 w-4 h-4 bg-[#00BEEA] text-white text-[10px] rounded-full grid place-items-center">0</span>
+              </button>
             <button id="mobileMenuBtn" class="md:hidden rounded-full p-2 hover:bg-[#EAE6DE]/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA]" aria-label="Toggle menu">
               <i data-lucide="menu" class="w-5 h-5"></i>
             </button>
@@ -110,6 +162,139 @@ function loadHeader() {
     ?.addEventListener("click", () => openModal());
 
   window.lucide && window.lucide.createIcons();
+
+  document
+    .getElementById("openWaitlist")
+    ?.addEventListener("click", () => openModal());
+
+  // cart button
+  document.getElementById("cartBtn")?.addEventListener("click", () => {
+    openCartModal();
+  });
+
+  // initialize cart count
+  updateCartCountUI();
+
+  window.lucide && window.lucide.createIcons();
+}
+
+function openCartModal() {
+  const modal = document.createElement("div");
+  modal.id = "cartModal";
+  modal.className =
+    "fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm";
+
+  const cart = getCart();
+  const hasItems = cart.length > 0;
+
+  const itemsHtml = hasItems
+    ? `
+      <div class="p-4 space-y-4 max-h-72 overflow-y-auto">
+        ${cart
+          .map((it) => {
+            const p = PRODUCTS[it.id] || { title: it.id, price: "$0.00" };
+            return `
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <img src="${p.image}" alt="${
+              p.title
+            }" class="w-14 h-14 object-cover rounded-md" width="56" height="56" />
+                  <div>
+                    <div class="text-sm font-medium">${p.title}</div>
+                    <div class="text-xs text-[#4C4C4C]">${p.size || ""}</div>
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div class="text-sm font-medium">${p.price}</div>
+                  <div class="text-xs text-[#4C4C4C]">Qty: ${it.qty}</div>
+                  <button data-remove="${
+                    it.id
+                  }" class="ml-2 mt-2 text-xs text-[#FF5A5F]">Remove</button>
+                </div>
+              </div>
+            `;
+          })
+          .join("")}
+      </div>
+      <div class="p-4 border-t border-[#E4E4E4] flex items-center justify-between">
+        <div class="text-sm font-medium">Total</div>
+        <div class="text-sm font-semibold">$${cart
+          .reduce(
+            (s, it) => s + formatPrice(PRODUCTS[it.id]?.price) * it.qty,
+            0
+          )
+          .toFixed(2)}</div>
+      </div>
+      <div class="p-4 flex gap-2">
+        <button id="checkoutBtn" class="flex-1 px-4 py-2 rounded-full bg-[#1F1F1F] text-white">Checkout</button>
+        <button id="clearCartBtn" class="px-4 py-2 rounded-full border border-[#E4E4E4]">Clear</button>
+      </div>
+    `
+    : `
+      <div class="p-8 text-center">
+        <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-[#EAE6DE]/40 flex items-center justify-center">
+          <i data-lucide="shopping-bag" class="w-10 h-10 text-[#00BEEA]"></i>
+        </div>
+        <h3 class="text-lg font-medium text-[#1F1F1F] mb-2">Your cart is empty</h3>
+        <p class="text-sm text-[#1F1F1F]/60 mb-6">Add some items to get started!</p>
+        <button id="continueShopping" class="px-6 py-2.5 bg-[#00BEEA] text-white rounded-full text-sm font-medium hover:bg-[#00BEEA]/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA] focus-visible:ring-offset-2">
+          Continue Shopping
+        </button>
+      </div>
+    `;
+
+  modal.innerHTML = `
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden">
+      <div class="flex items-center justify-between p-6 border-b border-[#E4E4E4]">
+        <h2 class="text-xl font-semibold text-[#1F1F1F]">Shopping Cart</h2>
+        <button id="closeCartModal" class="rounded-full p-2 hover:bg-[#EAE6DE]/60 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00BEEA]" aria-label="Close cart">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      ${itemsHtml}
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  window.lucide && window.lucide.createIcons();
+
+  document.getElementById("closeCartModal")?.addEventListener("click", () => {
+    modal.remove();
+  });
+
+  document.getElementById("continueShopping")?.addEventListener("click", () => {
+    modal.remove();
+    // navigate to shop page
+    window.location.href = "shop.html";
+  });
+
+  document.querySelectorAll("[data-remove]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const id = btn.getAttribute("data-remove");
+      if (!id) return;
+      removeFromCart(id);
+      // re-open modal to refresh contents
+      modal.remove();
+      openCartModal();
+    });
+  });
+
+  document.getElementById("clearCartBtn")?.addEventListener("click", () => {
+    clearCart();
+    modal.remove();
+    openCartModal();
+  });
+
+  document.getElementById("checkoutBtn")?.addEventListener("click", () => {
+    showToast("Checkout not implemented in demo.");
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.remove();
+    }
+  });
 }
 
 function loadFooter() {
