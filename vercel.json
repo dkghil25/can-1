@@ -7,20 +7,6 @@
       "config": { "distDir": "." }
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "headers": {
-        "Cache-Control": "private, no-cache, no-store, max-age=0, must-revalidate",
-        "CDN-Cache-Control": "no-store",
-        "Vercel-CDN-Cache-Control": "no-store",
-        "Surrogate-Control": "no-store",
-        "Pragma": "no-cache",
-        "Expires": "0"
-      },
-      "continue": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
