@@ -7,9 +7,6 @@
       "config": { "distDir": "." }
     }
   ],
-  "routes": [
-    { "src": "/(.*)", "dest": "/$1" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
